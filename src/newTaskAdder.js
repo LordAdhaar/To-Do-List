@@ -1,9 +1,8 @@
 import newTaskCreator from "./newTask.js";
-
-let newTaskDelete = document.createElement("button");
-newTaskDelete.classList.add("newTaskDelete");
-newTaskDelete.innerHTML = "X";
-newTaskDelete.addEventListener("click",removeTask);
+import enableDelete from "./enableDelete.js";
+import disableDelete from "./disableDelete.js";
+import removeDiv from "./remove.js";
+import createDelete from "./createDelete.js";
 
 
 export default function newTaskAdder(){
@@ -40,32 +39,11 @@ export default function newTaskAdder(){
     newTaskDiv.appendChild(newTaskDate);
     
     //toggling delete button
-    newTaskDiv.addEventListener("mouseenter",enableNewTaskDelete);
-    newTaskDiv.addEventListener("mouseleave",disableNewTaskDelete);
+    newTaskDiv.addEventListener("mouseenter",createDelete);
     
     //delete when checkbox clicked
-    newTaskCheckbox.addEventListener("click",removeTask)
+    newTaskCheckbox.addEventListener("click",removeDiv)
 
     //adding to all tasks page
     allTasksDiv.appendChild(newTaskDiv);
-}
-
-function enableNewTaskDelete(){  
-
-    newTaskDelete.setAttribute("id",`${this.id}`);
-    this.appendChild(newTaskDelete);
-}
-
-function disableNewTaskDelete(){
-
-    let remButton = document.querySelector(".newTaskDelete");
-    remButton.remove();
-}
-
-function removeTask(){
-
-    let taskToRemove = document.querySelector(`div.newTaskDiv#${this.id}`);
-    console.log(taskToRemove);
-    taskToRemove.remove();
-
 }
