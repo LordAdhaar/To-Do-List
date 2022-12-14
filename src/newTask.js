@@ -7,5 +7,4 @@ export default function newTaskCreator(){
 
     console.log({taskTitle:newTaskTitle, taskDate:newTaskDate, taskNum:count});
     return {taskTitle:newTaskTitle, taskDate:newTaskDate, taskNum:count};
-    
 }
