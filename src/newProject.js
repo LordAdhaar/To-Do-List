@@ -1,7 +1,7 @@
 import {projFlagSetter} from "./newProjectForm.js";
 
 let allProjectList = [];
-let count = -1;
+let count = allProjectList.length-1;
 
 function projectCreator(){
 
@@ -15,22 +15,15 @@ function projectCreator(){
     let projectId = count;
 
     let addProject = {title:projectTitle,projectNo:projectId,projectId:"project"+projectId};
-    addToallProjectsList(addProject);
-    console.log(addProject,allProjectList);
+
+    allProjectList.push(addProject);
+
+    for(let project of allProjectList){
+        console.log(project);
+    }
+
     return addProject
 
-}
-
-function addToallProjectsList(addProject){
-
-    let pushProject = [];
-
-    pushProject.push(addProject.title);
-    pushProject.push(addProject.projectNo);
-    pushProject.push(addProject.projectId);
-
-    allProjectList.push(pushProject);
-    console.log(allProjectList);
 }
 
 export default function newProjectAdder(){
@@ -78,7 +71,7 @@ function remProject(){
     let projectToRemove = document.querySelector(`div#${this.id}`);
     projectToRemove.remove();
     for(let project of allProjectList){
-        if(project[2]===this.id){
+        if(project.projectId===this.id){
             allProjectList.splice(allProjectList.indexOf(project),1);
         }
     }

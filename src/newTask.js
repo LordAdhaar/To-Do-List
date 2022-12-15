@@ -1,8 +1,8 @@
 import {flagSetter} from "./newTaskForm.js";
 
-let allTasksList = []
+export let allTasksList = [{title: '0', date: '2022-12-15', taskNo: 0, taskId: 'task0'},{title: '1', date: '2022-12-15', taskNo: 1, taskId: 'task1'}];
 
-let count=-1;
+let count=allTasksList.length-1;
 
 function TaskCreator(){
     
@@ -18,32 +18,21 @@ function TaskCreator(){
     
     let addTask = {title:taskTitle,date:taskDate,taskNo:taskId,taskId:"task"+taskId};
     
-    console.log(addTask);
-    addToAllTasksList(addTask);
+    allTasksList.push(addTask);
+    
+    for(let task of allTasksList){
+        console.log(task);
+    }
 
     return addTask;
     
-
-}
-
-function addToAllTasksList(addTask){
-
-    let pushTask=[];
-
-    pushTask.push(addTask.title);
-    pushTask.push(addTask.date);
-    pushTask.push(addTask.taskNo);
-    pushTask.push(addTask.taskId);
-    
-    allTasksList.push(pushTask);
-    
-    console.log(allTasksList);
 
 
 }
 
 export default function newTaskAdder(){
 
+    console.log(this);
     let allTasksDiv = document.querySelector(".allTasksDiv");
 
     //storing newTask
@@ -98,13 +87,13 @@ export default function newTaskAdder(){
 
 }
 
-function removeDiv(){
+export function removeDiv(){
 
     let toRemove = document.querySelector(`div#${this.id}`);
     toRemove.remove();
 
     for(let task of allTasksList){
-        if(task[3]===this.id){
+        if(task.taskId===this.id){
             allTasksList.splice(allTasksList.indexOf(task),1);
         }
     }
