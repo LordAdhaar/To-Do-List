@@ -12,13 +12,13 @@ export default function newTaskForm(){
 
     let allTasksPage = document.querySelector("#allTasksPage");
 
-    let form = document.createElement("div");
+    let form = document.createElement("form");
     let taskTitle = document.createElement("input");
     let taskDateInput = document.createElement("input");
     let taskAddButton = document.createElement("button");
     let taskCancelButton = document.createElement("button");
 
-    form.classList.add("form");
+    form.classList.add("taskForm");
     taskTitle.classList.add("taskTitle");
     taskDateInput.classList.add("taskDateInput");
     taskAddButton.classList.add("taskAddButton");
@@ -31,7 +31,7 @@ export default function newTaskForm(){
     taskDateInput.type="date";
     taskDateInput.required=true;
 
-    taskAddButton.type="submit";
+    taskAddButton.type="button";
     taskCancelButton.type="button";
 
     taskAddButton.innerHTML="ADD";
@@ -45,6 +45,17 @@ export default function newTaskForm(){
 
     //event listener for addTask
     taskAddButton.addEventListener("click",newTaskAdder);
-
     flag=true;
+    taskCancelButton.addEventListener("click",cancelForm);
+
+}
+
+function cancelForm(){
+    let formToBeRemoved = document.querySelector(".taskForm");
+    formToBeRemoved.remove();
+    flag=false;
+}
+
+export function flagSetter(){
+    flag = false;
 }

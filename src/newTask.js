@@ -1,3 +1,5 @@
+import {flagSetter} from "./newTaskForm.js";
+
 let allTasksList = []
 
 let count=-1;
@@ -14,7 +16,7 @@ function TaskCreator(){
     count+=1;
     let taskId=count;
     
-    let addTask = {title:taskTitle,date:taskDate,taskId:taskId};
+    let addTask = {title:taskTitle,date:taskDate,taskNo:taskId,taskId:"task"+taskId};
     
     console.log(addTask);
     addToAllTasksList(addTask);
@@ -30,6 +32,7 @@ function addToAllTasksList(addTask){
 
     pushTask.push(addTask.title);
     pushTask.push(addTask.date);
+    pushTask.push(addTask.taskNo);
     pushTask.push(addTask.taskId);
     
     allTasksList.push(pushTask);
@@ -46,6 +49,10 @@ export default function newTaskAdder(){
     //storing newTask
     let newTask = TaskCreator();
 
+    if(newTask===undefined){
+        return;
+    }
+
 
     let newTaskDiv = document.createElement("div");
     let newTaskCheckbox = document.createElement("input");
@@ -57,9 +64,9 @@ export default function newTaskAdder(){
     newTaskCheckbox.classList.add("newTaskCheckbox");
     newTaskDiv.classList.add("newTaskDiv");
 
-    newTaskDiv.setAttribute("id",`task${newTask.taskId}`);
-    newTaskCheckbox.setAttribute("id",`task${newTask.taskId}`);
-    delTaskBtn.setAttribute("id",`task${newTask.taskId}`);
+    newTaskDiv.setAttribute("id",newTask.taskId);
+    newTaskCheckbox.setAttribute("id",newTask.taskId);
+    delTaskBtn.setAttribute("id",newTask.taskId);
     
     newTaskTitle.classList.add("newTaskTitle");
     newTaskDate.classList.add("newTaskDate");
@@ -86,15 +93,28 @@ export default function newTaskAdder(){
     //adding to all tasks page
     allTasksDiv.appendChild(newTaskDiv);
 
+    //
+    remForm();
+
 }
 
 function removeDiv(){
 
     let toRemove = document.querySelector(`div#${this.id}`);
+    toRemove.remove();
 
     for(let task of allTasksList){
-        console.log(task);
+        if(task[3]===this.id){
+            allTasksList.splice(allTasksList.indexOf(task),1);
+        }
     }
 
-    toRemove.remove();
+    console.log(allTasksList);
+
+}
+
+function remForm(){
+    let formToBeRemoved = document.querySelector(".taskForm");
+    formToBeRemoved.remove();
+    flagSetter()
 }
