@@ -1,7 +1,9 @@
 import "./style.css";
 import allTaskLoader from "./allTasks.js";
-
+import newProjectForm from "./newProjectForm.js";
 
 let allTasksBtn = document.querySelector("#allTasks");
 allTasksBtn.addEventListener("click",allTaskLoader);
-console.log("hello world");
+
+let addProjectBtn = document.querySelector("#addProject");
+addProjectBtn.addEventListener("click",newProjectForm);
