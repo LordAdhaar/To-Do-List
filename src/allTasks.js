@@ -2,12 +2,18 @@ import newTaskForm from "./newTaskForm";
 import newTaskAdder, {allTasksList, removeDiv} from "./newTask.js";
 
 let content = document.querySelector("#content");
+let heading = document.querySelector("#heading");
 let flag = false;
 
 export default function allTaskLoader(){
 
     if(flag===true){
         return;
+    }
+
+    let projectPageToRemove = document.querySelector(".projectPage");
+    if(projectPageToRemove!==null){
+        projectPageToRemove.remove();
     }
 
     //creating divs
@@ -92,6 +98,11 @@ function taskLoader(allTasksList){
 
         //adding to all tasks page
         allTasksDiv.appendChild(newTaskDiv);
+
     }
 
+}
+
+export function flagToggler(){
+    flag = false;
 }

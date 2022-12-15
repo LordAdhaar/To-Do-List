@@ -1,6 +1,7 @@
-import {projFlagSetter} from "./newProjectForm.js";
+import {projFlagSetter} from "./newProjectForm.js"; 
+import projectPageLoader from "./createProjectPage.js";
 
-let allProjectList = [];
+export let allProjectList = [];
 let count = allProjectList.length-1;
 
 function projectCreator(){
@@ -14,7 +15,7 @@ function projectCreator(){
     count+=1
     let projectId = count;
 
-    let addProject = {title:projectTitle,projectNo:projectId,projectId:"project"+projectId};
+    let addProject = {title:projectTitle,projectNo:projectId,projectId:"project"+projectId,projectTasksList:[]};
 
     allProjectList.push(addProject);
 
@@ -59,6 +60,9 @@ export default function newProjectAdder(){
     newProjectDiv.appendChild(delProjectBtn);
 
     delProjectBtn.addEventListener("click",remProject);
+
+    //event listener on newProjectDiv to fire createProjectPage add here
+    newProjectDiv.addEventListener("click",()=>{projectPageLoader(newProject)});
 
     allProjects.appendChild(newProjectDiv);
 
