@@ -1,5 +1,6 @@
 import {flagToggler} from "./allTasks.js";
-import {allProjectList} from "./newProject.js";
+import newProjectTaskForm from "./newProjectTaskForm.js";
+import {projectTaskFormFlagToggle} from "./newProjectTaskForm.js"
 
 let content = document.querySelector("#content");
 let oldProjectPage;
@@ -10,6 +11,8 @@ export default function projectPageLoader(newProject){
 
     let allTasksPage = document.querySelector("#allTasksPage");
     allTasksPageRemover(allTasksPage);
+
+    projectTaskFormFlagToggle();
 
     if(flag === true){
         if(oldProjectPage===newProject.projectId+"Page"){
@@ -58,7 +61,7 @@ export default function projectPageLoader(newProject){
     content.appendChild(projectPage);
 
     //event listener for addTaskButton for the page
-
+    addProjectTaskBtn.addEventListener("click",()=>{newProjectTaskForm(projectPage)});
 
     //load project ke tasks
     projectTaskLoader(newProject);
