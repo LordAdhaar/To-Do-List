@@ -1,6 +1,7 @@
 import {flagSetter} from "./newTaskForm.js";
+import { allProjectList } from "./newProject.js";
 
-export let allTasksList = [{title: '0', date: '2022-12-15', taskNo: 0, taskId: 'task0'},{title: '1', date: '2022-12-15', taskNo: 1, taskId: 'task1'}];
+export let allTasksList = [{title: '0', date: '2022-12-15', taskNo: 0, taskId: 'task0',UniqueId:-1},{title: '1', date: '2022-12-15', taskNo: 1, taskId: 'task1',UniqueId:-1}];
 
 let count=allTasksList.length-1;
 
@@ -16,7 +17,7 @@ function TaskCreator(){
     count+=1;
     let taskId=count;
     
-    let addTask = {title:taskTitle,date:taskDate,taskNo:taskId,taskId:"task"+taskId};
+    let addTask = {title:taskTitle,date:taskDate,taskNo:taskId,taskId:"task"+taskId,UniqueId:-1};
     
     allTasksList.push(addTask);
     
@@ -52,10 +53,12 @@ export default function newTaskAdder(){
     // adding classes to the components
     newTaskCheckbox.classList.add("newTaskCheckbox");
     newTaskDiv.classList.add("newTaskDiv");
+    newTaskDiv.classList.add(`${newTask.UniqueId}`);
 
     newTaskDiv.setAttribute("id",newTask.taskId);
     newTaskCheckbox.setAttribute("id",newTask.taskId);
     delTaskBtn.setAttribute("id",newTask.taskId);
+
     
     newTaskTitle.classList.add("newTaskTitle");
     newTaskDate.classList.add("newTaskDate");
@@ -87,17 +90,42 @@ export default function newTaskAdder(){
 
 }
 
-export function removeDiv(){
+export function removeDiv(newTaskDiv){
 
+    console.log(this);
     let toRemove = document.querySelector(`div#${this.id}`);
+    console.log(toRemove.classList[1]);
     toRemove.remove();
 
     for(let task of allTasksList){
+        console.log("im in")
         if(task.taskId===this.id){
+            console.log(true);
             allTasksList.splice(allTasksList.indexOf(task),1);
+        }
+    }   
+
+    if(allProjectList.length===0){
+        return;
+    }
+
+    for(let project of allProjectList){
+
+        if(project.projectTasksList.length!==0){
+
+            for(let projectTask of project.projectTasksList){
+            
+                if(+toRemove.classList[1]===projectTask.UniqueId){
+                    console.log("about to get cancelled");
+                    project.projectTasksList.splice(project.projectTasksList.indexOf(projectTask),1);    
+                }
+            
+
+            }
         }
     }
 
+    console.log(allProjectList);
     console.log(allTasksList);
 
 }

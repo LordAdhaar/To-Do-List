@@ -1,11 +1,13 @@
+import newProjectTaskAdder from "./newProjectTask.js"
+
 let flag = false;
 
-export default function newProjectTaskForm(projectPage){
+export default function newProjectTaskForm(projectPage,newProject){
 
     if(flag === true){
         return;
     }
-
+    console.log(newProject);
     console.log(flag,projectPage);
 
     let form = document.createElement("form");
@@ -40,10 +42,20 @@ export default function newProjectTaskForm(projectPage){
 
     projectPage.appendChild(form);
 
+    //projectTaskAddButton event listener
+    projectTaskAddButton.addEventListener("click",()=>{newProjectTaskAdder(newProject)});
+    
     flag=true;
+    projectTaskCancelButton.addEventListener("click",()=>{cancelProjectTaskForm(form)});
+    
 
 }
 
 export function projectTaskFormFlagToggle(){
     flag = false;
+}
+
+function cancelProjectTaskForm(form){
+    form.remove();
+    flag=false;
 }

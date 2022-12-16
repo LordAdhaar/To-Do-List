@@ -69,6 +69,7 @@ function taskLoader(allTasksList){
         // adding classes to the components
         newTaskCheckbox.classList.add("newTaskCheckbox");
         newTaskDiv.classList.add("newTaskDiv");
+        newTaskDiv.classList.add(`${newTask.UniqueId}`);
 
         newTaskDiv.setAttribute("id",newTask.taskId);
         newTaskCheckbox.setAttribute("id",newTask.taskId);
