@@ -1,5 +1,6 @@
 import newTaskForm from "./newTaskForm";
 import newTaskAdder, {allTasksList, removeDiv} from "./newTask.js";
+import {flagSetter} from "./newTaskForm";
 
 let content = document.querySelector("#content");
 let heading = document.querySelector("#heading");
@@ -10,6 +11,8 @@ export default function allTaskLoader(){
     if(flag===true){
         return;
     }
+
+    flagSetter();
 
     let projectPageToRemove = document.querySelector(".projectPage");
     if(projectPageToRemove!==null){
