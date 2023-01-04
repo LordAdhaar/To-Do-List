@@ -85,7 +85,7 @@ function taskLoader(allTasksList){
         //filling in the description of the task
         newTaskTitle.innerHTML = newTask.title;
         newTaskDate.innerHTML = newTask.date;
-        delTaskBtn.innerHTML="DEL";
+        delTaskBtn.innerHTML="X";
 
         //adding content to task
         newTaskDiv.appendChild(newTaskCheckbox);

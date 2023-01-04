@@ -53,7 +53,7 @@ export default function newProjectAdder(){
 
     //adding text;
     newProjectTitle.innerHTML=newProject.title;
-    delProjectBtn.innerHTML="DEL";
+    delProjectBtn.innerHTML="X";
 
     //appending children;
     newProjectDiv.appendChild(newProjectTitle);

@@ -71,7 +71,7 @@ export default function newProjectTaskAdder(newProject){
     //adding text;
     newProjectTaskTitle.innerHTML = newProjectTask.title;
     newProjectTaskDate.innerHTML=newProjectTask.date;
-    delNewProjectTaskBtn.innerHTML="DEL";
+    delNewProjectTaskBtn.innerHTML="X";
 
     //adding content to tasks
     newProjectTaskDiv.appendChild(newProjectTaskCheckbox);
