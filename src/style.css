@@ -4,6 +4,14 @@ body{
     margin: 0px;
     min-height: 100vh;
     font-family: sans-serif;
+    background: beige;
+}
+
+h1.headingText{
+    transform: rotateY(180deg);
+    border: 2px solid;
+    box-shadow: 0px 0px 5px 0px black;
+    background-color: white;
 }
 
 form.taskForm{
@@ -22,33 +30,42 @@ form.projectForm{
 form.projectTaskForm{
     display: flex;
     gap: 5px;
+    margin-top: 15px;
 }
 
 #container{
     display: grid;
     grid-template-columns: 1fr 4fr;
+    background-image: url("./05eeb93a2e41734ecb6044146351f11e.jpeg");
+    background-size: contain;
 
 }
 
 #content{
-    padding: 0px 200px;
+    padding: 10px 10px;
+    background-color: #d6d6dd;
+    margin: 0px 10px;
+    min-height: 100vh;
+    border: 2px solid;
+    box-shadow: 0px 0px 5px 0px grey;
 }
 
 #content h2{
 }
 
-div.allTasksDiv{
+div.allTasksDiv, div.projectAllTasksDiv{
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
 #content .newTaskDiv, #content .newProjectTaskDiv{
-    border: 1px solid black;
+    border: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    background: white;
 }
 
 
@@ -58,11 +75,15 @@ div.allTasksDiv{
 }
 
 #sidebar{
+    margin-left: 10px;
     display: flex;
+    background-color: white;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    padding: 0px 10px;
+    box-shadow: 0px 0px 5px 0px grey;
+    padding: 10px;
+    border: 2px solid;
 }
 
 #allTasks{
@@ -116,6 +137,10 @@ button{
     font-weight: 500; 
 }
 
+button.addProjectTaskBtn{
+    margin-top: 15px;
+}
+
 
 #addProject{
     border: 2px solid black;
@@ -137,3 +162,5 @@ button{
 div.newProjectDiv button{
     
 }
+
+
