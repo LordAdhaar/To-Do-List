@@ -6,4 +6,4 @@ Project No. #8
 
 Live Preview
 
-https://lordadhaar.github.io/To-Do-List/
+https://lordadhaar.github.io/To-Do-List
