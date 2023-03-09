@@ -4,14 +4,11 @@ body{
     margin: 0px;
     min-height: 100vh;
     font-family: sans-serif;
-    background: beige;
+    background: black;
 }
 
 h1.headingText{
-    transform: rotateY(180deg);
-    border: 2px solid;
-    box-shadow: 0px 0px 5px 0px black;
-    background-color: white;
+    color: white;
 }
 
 form.taskForm{
@@ -22,7 +19,8 @@ form.taskForm{
 
 form.projectForm{
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: space-between;
     gap: 5px;
 }
@@ -36,18 +34,12 @@ form.projectTaskForm{
 #container{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    background-image: url("./05eeb93a2e41734ecb6044146351f11e.jpeg");
-    background-size: contain;
-
 }
 
 #content{
     padding: 10px 10px;
-    background-color: #d6d6dd;
-    margin: 0px 10px;
+    background-color: #ffffff;
     min-height: 100vh;
-    border: 2px solid;
-    box-shadow: 0px 0px 5px 0px grey;
 }
 
 #content h2{
@@ -72,28 +64,40 @@ div.allTasksDiv, div.projectAllTasksDiv{
 #heading{
     grid-column:1/3;
     padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropDown{
+    display: none;
+    background-color: black;
+
+}
+
+#heading img{
+    width: auto;
+    height: 40px;
 }
 
 #sidebar{
-    margin-left: 10px;
     display: flex;
-    background-color: white;
+    background-color: #212121;
+    color: white ;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    box-shadow: 0px 0px 5px 0px grey;
     padding: 10px;
-    border: 2px solid;
 }
 
 #allTasks{
+    padding: 0px;
     box-sizing: border-box;
-    height: 70px;
     width: 170px;
-    background: black; 
+    background: #212121; 
     color: white;
     border: 0px;
-    font-size: 28px;
+    font-size: 20px;
+    text-align: left;
     font-weight: bold;
     MARGIN: 0PX;
 }
@@ -102,7 +106,7 @@ div.allTasksDiv, div.projectAllTasksDiv{
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 
 #projects{
@@ -110,6 +114,7 @@ div.allTasksDiv, div.projectAllTasksDiv{
     gap: 10px;
     align-items: center;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 button.projectAddButton, button.projectCancelButton,button.taskAddButton,button.taskCancelButton{
@@ -122,19 +127,19 @@ button.projectAddButton, button.projectCancelButton,button.taskAddButton,button.
 
 button.addTaskButton{
     border: 2px solid black;
-    background: white;
-    color: black;
+    background: black;
+    color: white;
     font-size: 15px;
     font-weight: 500;
     margin-top: 15px;
 }
 
 button{
-    border: 2px solid black;
-    background: white;
-    color: black;
+    border: 0px;
+    background: #212121;
+    color: white;
     font-size: 15px;
-    font-weight: 500; 
+    font-weight: 700; 
 }
 
 button.addProjectTaskBtn{
@@ -154,13 +159,58 @@ button.addProjectTaskBtn{
 .newProjectDiv{
     display: flex;
     justify-content: space-between;
-    background-color: black;
+    background-color: #212121;
     color: white;
-    padding-left: 5px;
+    padding-left: 10px;
+    border-left: 5px solid;
+    border-radius: 5px;
 }
 
-div.newProjectDiv button{
-    
+
+.newProjectTitle{
+    margin: 8px 0px;
 }
 
+button.projectAddButton{
+    grid-column: 1/2;
+}
 
+input.projectTitle{
+    grid-column: 1/3;
+}
+
+button.projectCancelButton{
+
+}
+
+#content .newTaskDiv{
+    border-radius: 5px;
+}
+
+.newTaskDiv button{
+    display: none;
+}
+
+.newProjectTaskDiv button{
+    display: none;
+}
+
+.active{
+    display: flex;
+}
+
+@media (max-width:800px){
+    #sidebar{
+        grid-column: 1/3;
+        display: none;
+    }
+    #content{
+        grid-column: 1/3;
+    }
+    .dropDown{
+        display: block;
+    }
+    form.projectForm{
+        display: block;
+    }
+}

@@ -1,7 +1,7 @@
 import {flagSetter} from "./newTaskForm.js";
 import { allProjectList } from "./newProject.js";
 
-export let allTasksList = [{title: '0', date: '2022-12-15', taskNo: 0, taskId: 'task0',UniqueId:-1},{title: '1', date: '2022-12-15', taskNo: 1, taskId: 'task1',UniqueId:-1}];
+export let allTasksList = [{title: 'Pickup Groceries', date: '2022-12-15', taskNo: 0, taskId: 'task0',UniqueId:-1},{title: 'Pay Phonebill', date: '2022-12-15', taskNo: 1, taskId: 'task1',UniqueId:-1}];
 
 let count=allTasksList.length-1;
 
