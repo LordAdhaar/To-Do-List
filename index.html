@@ -7,11 +7,32 @@
     <title>To-Do-List </title>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
+<script>
+
+    let flag = false;
+
+    function activateSidebar(){
+        const sidebar = document.getElementById("sidebar");
+
+        if (flag===false){
+            sidebar.style.display="flex";
+            flag=true;
+        }
+        else{
+            sidebar.style.display="none";
+            flag=false;
+        }
+        console.log(sidebar);
+    }
+</script>
 <body>
     <div id="container">
         
         <div id="heading">
             <h1 class="headingText">TO-DO-LIST</h1>
+            <button class="dropDown" onclick="activateSidebar()">
+                <img src="../src/1024px-Hamburger_icon_white.svg.png" alt="" srcset="">
+            </button>
         </div>
 
         <div id="sidebar">
